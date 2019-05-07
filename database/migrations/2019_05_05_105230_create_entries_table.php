@@ -17,7 +17,7 @@ class CreateEntriesTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('category');
-            $table->string('image');
+            $table->string('image')->nullable(true);
             $table->text('story');
             $table->integer('user_id');
             $table->timestamps();
