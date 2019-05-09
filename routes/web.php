@@ -14,3 +14,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api/v1'], function () use ($router) {
+    $router->post('/auth/signup', 'UserController@signUp');
+    $router->post('/auth/signin', 'UserController@login');
+    $router->get('/profile', ['middleware' => 'jwt.auth', 'uses' => 'UserController@viewProfile']);
+    $router->put('/profile', ['middleware' => 'jwt.auth', 'uses' => 'UserController@updateProfile']);
+});
