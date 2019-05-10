@@ -20,4 +20,9 @@ $router->group(['prefix' => 'api/v1'], function () use ($router) {
     $router->post('/auth/signin', 'UserController@login');
     $router->get('/profile', ['middleware' => 'jwt.auth', 'uses' => 'UserController@viewProfile']);
     $router->put('/profile', ['middleware' => 'jwt.auth', 'uses' => 'UserController@updateProfile']);
+    $router->post('/entries', ['middleware' => 'jwt.auth', 'uses' => 'EntryController@addEntry']);
+    $router->get('/entries', ['middleware' => 'jwt.auth', 'uses' => 'EntryController@getAllEntries']);
+    $router->get('/entries/{id}', ['middleware' => 'jwt.auth', 'uses' => 'EntryController@getEntry']);
+    $router->put('/entries/{id}', ['middleware' => 'jwt.auth', 'uses' => 'EntryController@updateEntry']);
+    $router->delete('/entries/{id}', ['middleware' => 'jwt.auth', 'uses' => 'EntryController@deleteEntry']);
 });

@@ -11,14 +11,14 @@ class Entry extends Model
    *
    * @var array
    */
-  protected $fillable = ['title', 'category', 'image', 'story', 'userId'];
+  protected $fillable = ['title', 'category', 'image', 'story', 'user_id'];
 
   /**
    * The attributes excluded from the model's JSON form.
    *
    * @var array
    */
-  protected $hidden = [];
+  protected $hidden = ['created_at', 'updated_at'];
 
     public function user()
     {

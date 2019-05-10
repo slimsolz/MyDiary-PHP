@@ -1,22 +1,43 @@
 # Lumen PHP Framework
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
 [![Build Status](https://travis-ci.org/slimsolz/myDiary-php.svg?branch=develop)](https://travis-ci.org/slimsolz/myDiary-php)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
 [![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5730add7516b6bd86a89/maintainability)](https://codeclimate.com/github/slimsolz/myDiary-php/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5730add7516b6bd86a89/test_coverage)](https://codeclimate.com/github/slimsolz/myDiary-php/test_coverage)
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## MyDiary
 
-## Official Documentation
+MyDiary is an online journal where users can pen down their thoughts and feelings.
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+## Features
 
-## Security Vulnerabilities
+- Sign up: `POST api/v1/auth/signup`
+- Sign in: `POST api/v1/auth/signin`
+- Update profile: `PUT api/v1/profile`
+- View profile: `GET api/v1/profile`
+- List all entries: `GET api/v1/entries`
+- show a single entry: `GET api/v1/entries/{id}`
+- Add new entry: `POST api/v1/entries`
+- Update an entry: `PUT api/v1/entries/{id}`
+- Delete an entry: `DELETE api/v1/entries/{id}`
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+### Dependencies
 
-## License
+- Lumen: Web application framework for PHP.
+
+### How To Contribute
+
+- Fork the project & clone locally.
+- Branch for each separate piece of work `$ git checkout -b <branch-name>`
+- Do the work, write good commit messages.
+- Push to your origin repository.
+- Create a new PR in GitHub.
+- Wait for approval.
+
+### License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+#### Author
+
+[Odumah Solomon](https://twitter.com/slimsolz)
