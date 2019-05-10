@@ -27,11 +27,7 @@ class EntryController extends Controller
     ]);
 
     $foundEntry = Entry::where('title', $this->request->title)->first();
-    if ($foundEntry) {
-      return response()->json([
-        'message' => 'Entry already exists'
-      ], 409);
-    }
+    if ($foundEntry) return response()->json(['message' => 'Entry already exists'], 409);
 
     $newEntry = Entry::create([
       'title' => $this->request->title,
@@ -49,7 +45,6 @@ class EntryController extends Controller
         'image' => $newEntry->image,
         'story' => $newEntry->story,
         'user_id' => $newEntry->user_id
-
       ]
     ], 201);
   }
@@ -118,24 +113,16 @@ class EntryController extends Controller
 
   public function updateEntry($id)
   {
-    $time = carbon::now();
-
     if((!is_numeric($id)) || is_double($id + 0) || is_bool($id)){
-      return response()->json([
-        'message' => 'Invalid product id'
-      ], 400);
+      return response()->json(['message' => 'Invalid product id'], 400);
     }
 
     $user_id = $this->request->auth->id;
     $entry = Entry::where('user_id', $user_id)->where('id', $id)->get();
 
-    if (sizeof($entry) === 0) {
-      return response()->json([
-        'message' => 'Entry not found',
-      ], 404);
-    }
+    if (sizeof($entry) === 0) return response()->json(['message' => 'Entry not found',], 404);
 
-    if ($time->toDateString() === $entry[0]->created_at->toDateString()) {
+    if ((carbon::now()->toDateString()) === ($entry[0]->created_at->toDateString())) {
       $entry[0]->title = $this->request->title;
       $entry[0]->category = $this->request->category;
       $entry[0]->image = $this->request->image;
@@ -148,8 +135,6 @@ class EntryController extends Controller
       ]);
     }
 
-    return response()->json([
-      'message' => 'Entry can only be edited the day it is created',
-    ], 403);
+    return response()->json(['message' => 'Entry can only be edited the day it is created'], 403);
   }
 }

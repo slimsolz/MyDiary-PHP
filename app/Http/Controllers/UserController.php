@@ -54,19 +54,10 @@ class UserController extends Controller
       'password' => 'required|alpha_num|min:8'
     ]);
 
-    $user = [
-      'email' => $this->request->email,
-      'password' => $this->request->password
-    ];
+    $foundUser = User::where('email', $this->request->email)->first();
+    if (!$foundUser) return response()->json(['message' => 'Incorrect email/password'], 401);
 
-    $foundUser = User::where('email', $user['email'])->first();
-    if (!$foundUser) {
-      return response()->json([
-        'message' => 'Incorrect email/password'
-      ], 401);
-    }
-
-    $confirmPassword = Hash::check($user['password'], $foundUser->password);
+    $confirmPassword = Hash::check($this->request->password, $foundUser->password);
 
     if($confirmPassword) {
       $token = $this->jwt($foundUser);
@@ -112,11 +103,11 @@ class UserController extends Controller
   }
 
   /**
-     * Create a token
-     *
-     * @param \App\User $user
-     * @return string
-     */
+   * Create a token
+   *
+   * @param \App\User $user
+   * @return string
+   */
     protected function jwt(User $user) {
       $payload = [
           'iss' => "jwt",
