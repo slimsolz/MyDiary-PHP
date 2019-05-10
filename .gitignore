@@ -5,3 +5,5 @@ Homestead.yaml
 .env
 .vscode
 /cover
+.coveralls.yml
+/build

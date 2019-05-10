@@ -4,6 +4,7 @@
 [![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
 [![Maintainability](https://api.codeclimate.com/v1/badges/5730add7516b6bd86a89/maintainability)](https://codeclimate.com/github/slimsolz/myDiary-php/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5730add7516b6bd86a89/test_coverage)](https://codeclimate.com/github/slimsolz/myDiary-php/test_coverage)
+[![Coverage Status](https://coveralls.io/repos/github/slimsolz/myDiary-php/badge.svg?branch=develop)](https://coveralls.io/github/slimsolz/myDiary-php?branch=develop)
 
 ## MyDiary
 
