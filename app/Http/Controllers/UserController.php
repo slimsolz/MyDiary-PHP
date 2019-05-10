@@ -122,7 +122,7 @@ class UserController extends Controller
           'iss' => "jwt",
           'sub' => $user->id,
           'iat' => time(),
-          'exp' => time() + 60 * 60 * 24* 365
+          'exp' => time() + 60 * 60 * 24
       ];
 
       return JWT::encode($payload, env('JWT_SECRET'));

@@ -3,6 +3,11 @@ language: php
 php:
   - 7.2.13
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=d119c3f2b4331b092297600c044b0d7b40811ae7427bb97d04bc41c399ea5f02
+    - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
+
 services:
   - postgresql
 
@@ -11,6 +16,10 @@ before_script:
   - psql -c 'create database mydiary_test;' -U postgres
   - composer self-update
   - composer install --no-interaction
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 
 cache:
   directories:
@@ -18,4 +27,6 @@ cache:
     - vendor
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
+  # - "phpunit --testsuite=unit --coverage-text --coverage-clover build/logs/clover.xml"
+  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build  -t clover --exit-code $TRAVIS_TEST_RESULT; fi
