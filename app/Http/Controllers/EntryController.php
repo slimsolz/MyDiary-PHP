@@ -23,8 +23,7 @@ class EntryController extends Controller
       'title' => 'required',
       'category' => 'required',
       'image' => 'required',
-      'story' => 'required'
-    ]);
+      'story' => 'required' ]);
 
     $foundEntry = Entry::where('title', $this->request->title)->first();
     if ($foundEntry) return response()->json(['message' => 'Entry already exists'], 409);
@@ -34,8 +33,7 @@ class EntryController extends Controller
       'category' => $this->request->category,
       'image' => $this->request->image,
       'story' => $this->request->story,
-      'user_id' => $user_id
-    ]);
+      'user_id' => $user_id ]);
 
     return response()->json([
       'message' => 'Entry created successfully',
@@ -44,8 +42,7 @@ class EntryController extends Controller
         'category' => $newEntry->category,
         'image' => $newEntry->image,
         'story' => $newEntry->story,
-        'user_id' => $newEntry->user_id
-      ]
+        'user_id' => $newEntry->user_id ]
     ], 201);
   }
 
