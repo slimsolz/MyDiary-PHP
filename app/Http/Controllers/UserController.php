@@ -108,14 +108,14 @@ class UserController extends Controller
    * @param \App\User $user
    * @return string
    */
-    protected function jwt(User $user) {
-      $payload = [
-          'iss' => "jwt",
-          'sub' => $user->id,
-          'iat' => time(),
-          'exp' => time() + 60 * 60 * 24
-      ];
+  protected function jwt(User $user) {
+    $payload = [
+      'iss' => "jwt",
+      'sub' => $user->id,
+      'iat' => time(),
+      'exp' => time() + 60 * 60 * 24
+    ];
 
-      return JWT::encode($payload, env('JWT_SECRET'));
+    return JWT::encode($payload, env('JWT_SECRET'));
   }
 }
